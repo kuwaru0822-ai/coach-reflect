@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coach Reflect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Coach Reflect</h1>
+  <p>あなたの指導を振り返る</p>
+</header>
+<main>
+  <!-- 今日の指導 -->
+  <section class="card">
+    <h2>今日の指導</h2>
+    <p class="sub">
+      今日の練習で起きたこと、感じたことを書いてください。
+    </p>
+    <textarea
+      id="problem"
+      placeholder="例：今日はミスが多く、何度も注意してしまった。最後は自分もイライラしてしまい、選手が少し萎縮しているように感じた。"
+    ></textarea>
+    <button id="startButton">
+      振り返りを始める
+    </button>
+  </section>
+  <!-- 振り返り -->
+  <section id="reflection" class="card hidden">
+    <h2>自分の指導を振り返る</h2>
+    <label>
+      そのとき、自分はどんな気持ちでしたか？
+    </label>
+    <textarea
+      id="emotion"
+      placeholder="イライラした、焦った、期待していた……"
+    ></textarea>
+    <label>
+      選手はどんな反応をしていましたか？
+    </label>
+    <textarea
+      id="playerReaction"
+      placeholder="黙った、反発した、いつも通りだった……"
+    ></textarea>
+    <label>
+      今日、自分ができた良い指導は何ですか？
+    </label>
+    <textarea
+      id="good"
+      placeholder="声かけができた、具体的に説明できた……"
+    ></textarea>
+    <label>
+      次回、変えてみたいことは何ですか？
+    </label>
+    <textarea
+      id="change"
+      placeholder="注意する回数を減らす、できたことを伝える……"
+    ></textarea>
+    <!-- 自己評価 -->
+    <h2 class="evaluation-title">
+      今日の指導を自己評価
+    </h2>
+    <p class="sub">
+      1＝改善したい　5＝かなり良かった
+    </p>
+    <div class="score-group">
+      <div class="score-item">
+        <span>感情のコントロール</span>
+        <select id="emotionScore">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="score-item">
+        <span>指導の具体性</span>
+        <select id="specificityScore">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="score-item">
+        <span>選手との関係</span>
+        <select id="relationshipScore">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="score-item">
+        <span>選手の主体性</span>
+        <select id="autonomyScore">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    </div>
+    <button id="analyzeButton">
+      振り返りを整理する
+    </button>
+  </section>
+  <!-- 結果 -->
+  <section id="result" class="card hidden">
+    <h2>今日の振り返り</h2>
+    <div class="resultBox">
+      <h3>あなたの状態</h3>
+      <p id="resultEmotion"></p>
+      <h3>選手への影響を考える</h3>
+      <p id="resultPlayer"></p>
+      <h3>今日の良かった点</h3>
+      <p id="resultGood"></p>
+      <h3>次回のテーマ</h3>
+      <p id="resultChange"></p>
+      <h3>今日の自己評価</h3>
+      <p id="resultScore"></p>
+    </div>
+    <button id="saveButton">
+      この記録を保存する
+    </button>
+  </section>
+  <!-- 履歴 -->
+  <section class="card">
+    <h2>過去の振り返り</h2>
+    <div id="history"></div>
+  </section>
+  <!-- 指導傾向 -->
+  <section id="trend" class="card hidden">
+    <h2>あなたの指導傾向</h2>
+    <p id="trendText"></p>
+  </section>
+  <!-- グラフ -->
+  <section id="chartSection" class="card hidden">
+    <h2>指導力の変化</h2>
+    <p class="sub">
+      最近10回の自己評価
+    </p>
+    <div class="chart">
+      <div class="chart-row">
+        <span>感情</span>
+        <div class="bar">
+          <div id="emotionBar"></div>
+        </div>
+        <strong id="emotionAverage"></strong>
+      </div>
+      <div class="chart-row">
+        <span>具体性</span>
+        <div class="bar">
+          <div id="specificityBar"></div>
+        </div>
+        <strong id="specificityAverage"></strong>
+      </div>
+      <div class="chart-row">
+        <span>関係</span>
+        <div class="bar">
+          <div id="relationshipBar"></div>
+        </div>
+        <strong id="relationshipAverage"></strong>
+      </div>
+      <div class="chart-row">
+        <span>主体性</span>
+        <div class="bar">
+          <div id="autonomyBar"></div>
+        </div>
+        <strong id="autonomyAverage"></strong>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
